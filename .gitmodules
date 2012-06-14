@@ -1,0 +1,3 @@
+[submodule "ExcelDna"]
+	path = ExcelDna
+	url = https://github.com/KevinT/ExcelDna

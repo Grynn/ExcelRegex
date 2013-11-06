@@ -5,6 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libExcelRegex", "libExcelRe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libExcelRegexTest", "..\libExcelRegexTest\libExcelRegexTest.csproj", "{9FCE79C2-FF92-4DE3-9847-7BEF813396AC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExcelDna", "ExcelDna", "{8830D535-0643-46D8-A53D-145D5C2EDE4B}"
+	ProjectSection(SolutionItems) = preProject
+		..\ExcelRegex.dna = ..\ExcelRegex.dna
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

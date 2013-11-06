@@ -12,9 +12,7 @@ namespace libExcelRegex
     public class MyFunctions
     {
         private static readonly Regex ReIsEmail = new Regex(
-            @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@
-               (?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|
-                info|mobi|name|aero|asia|jobs|museum)\b", RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
+            @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.Compiled);
 
         [ExcelCommand(MenuName = "&TestOnRecalc", MenuText = "&Enable Beep")]
         public static void EnableBeep()

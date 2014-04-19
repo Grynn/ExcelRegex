@@ -57,7 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\libExcelRegex\libExcelRegex.csproj">
+    <ProjectReference Include="..\lib\libExcelRegex.csproj">
       <Project>{44d3c889-f66c-4a7f-944c-d7aa6b3cb5de}</Project>
       <Name>libExcelRegex</Name>
     </ProjectReference>

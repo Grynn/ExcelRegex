@@ -1,14 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libExcelRegex", "libExcelRegex.csproj", "{44D3C889-F66C-4A7F-944C-D7AA6B3CB5DE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libExcelRegexTest", "..\libExcelRegexTest\libExcelRegexTest.csproj", "{9FCE79C2-FF92-4DE3-9847-7BEF813396AC}"
-EndProject
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExcelDna", "ExcelDna", "{8830D535-0643-46D8-A53D-145D5C2EDE4B}"
 	ProjectSection(SolutionItems) = preProject
-		..\ExcelRegex.dna = ..\ExcelRegex.dna
+		ExcelRegex.dna = ExcelRegex.dna
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libExcelRegex", "lib\libExcelRegex.csproj", "{44D3C889-F66C-4A7F-944C-D7AA6B3CB5DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libExcelRegexTest", "libExcelRegexTest\libExcelRegexTest.csproj", "{9FCE79C2-FF92-4DE3-9847-7BEF813396AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,7 +7,16 @@ namespace libExcelRegexTest
     [TestClass]
     public class UnitTest1
     {
-        
+        [TestMethod]
+        public void TestDnsResolve() 
+        {
+            var x = MyFunctions.DNSResolve("abc.lvh.me");
+            Assert.AreEqual("127.0.0.1", x);
+
+            x = MyFunctions.DNSResolve("abc.lvh.me", 2);
+            Assert.AreEqual("127.0.0.1", x);
+        }
+
         [TestMethod]
         public void TestRegexExtract()
         {

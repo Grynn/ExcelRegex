@@ -6,6 +6,8 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using System.Web;
+using System.Net;
+using System.Diagnostics;
 
 namespace libExcelRegex
 {
@@ -13,7 +15,8 @@ namespace libExcelRegex
     {
         //http://regexlib.com/Search.aspx?k=email&c=-1&m=5&ps=20 seems to be a good source of email validation regexes
         private static readonly Regex ReIsEmail = new Regex(
-            @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.Compiled);
+            @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$",
+            RegexOptions.Compiled);
 
         [ExcelCommand(MenuName = "&TestOnRecalc", MenuText = "&Enable Beep")]
         public static void EnableBeep()
@@ -25,6 +28,27 @@ namespace libExcelRegex
         public static void ShowLog()
         {
             ExcelDna.Logging.LogDisplay.Show();
+        }
+
+        [ExcelFunction(Name="DNS.Resolve")]
+        public static string DNSResolve(
+            [ExcelArgument(Description="Hostname or IP address to resolve")] string Hostname, 
+            [ExcelArgument(Description="If a hostname resolves to multiple addresses, which address to return")] int EntryId = 0)
+        {
+            var ipEntry = Dns.GetHostEntry(Hostname);
+            if (EntryId > ipEntry.AddressList.Length) 
+            {
+                throw new ArgumentOutOfRangeException("EntryId");
+            }
+            
+            return ipEntry.AddressList[EntryId].ToString();   
+        }
+
+        [ExcelFunction(Name = "DNS.ResolveAll")]
+        public static string[] DNSResolveAll([ExcelArgument(Description = "Hostname or IP address to resolve")] string Hostname)
+        {
+            var ipEntry = Dns.GetHostEntry(Hostname);
+            return ipEntry.AddressList.Select(x => x.ToString()).ToArray();
         }
 
         [ExcelFunction(Name = "RegexExtract")]
@@ -122,5 +146,7 @@ namespace libExcelRegex
         {
             return Activator.CreateInstance(Type.GetTypeFromProgID("MSXML2.XMLHTTP"));
         }
+
+        
     }
 }

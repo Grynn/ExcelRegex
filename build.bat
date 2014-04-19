@@ -3,7 +3,7 @@ setlocal
 set MSBUILD="C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe"
 
 
-%MSBUILD% libExcelRegex\libExcelRegex.sln /property:Configuration=Release /verbosity:q /nologo
+%MSBUILD% libExcelRegex.sln /property:Configuration=Release /verbosity:q /nologo
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 set CD=%~dp0%

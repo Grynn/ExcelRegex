@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using System;
 using MyFunctions = libExcelRegex.MyFunctions;
 
 namespace libExcelRegexTest
@@ -13,8 +13,15 @@ namespace libExcelRegexTest
             var x = MyFunctions.DNSResolve("abc.lvh.me");
             Assert.AreEqual("127.0.0.1", x);
 
-            x = MyFunctions.DNSResolve("abc.lvh.me", 2);
-            Assert.AreEqual("127.0.0.1", x);
+            try 
+            { 
+                x = MyFunctions.DNSResolve("abc.lvh.me", 2);
+                Assert.Fail("Expected ArgumentOutOfRangeException");
+            }
+            catch (ArgumentOutOfRangeException) 
+            {
+                Assert.IsTrue(true);
+            }
         }
 
         [TestMethod]

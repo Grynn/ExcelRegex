@@ -5,6 +5,7 @@ VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExcelDna", "ExcelDna", "{8830D535-0643-46D8-A53D-145D5C2EDE4B}"
 	ProjectSection(SolutionItems) = preProject
+		build.bat = build.bat
 		ExcelRegex.dna = ExcelRegex.dna
 	EndProjectSection
 EndProject

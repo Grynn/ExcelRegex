@@ -8,6 +8,9 @@ using System.Linq;
 using System.Web;
 using System.Net;
 using System.Diagnostics;
+using System.ComponentModel;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace libExcelRegex
 {
@@ -44,11 +47,26 @@ namespace libExcelRegex
             return ipEntry.AddressList[EntryId].ToString();   
         }
 
+        //TODO: MX records should be sorted by weight
+        [ExcelFunction(Name = "DNS.GetMX")]
+        public static string DNSGetMX(
+            [ExcelArgument(Description = "Domain for which to lookup MX records")] string Domain,
+            [ExcelArgument(Description = "Return nth MX record")] int EntryId = 0)
+        {
+            var entries = MXHelper.GetMXRecords(Domain);
+            if (EntryId > entries.Count())
+            {
+                throw new ArgumentOutOfRangeException("EntryId");
+            }
+
+            return entries[EntryId].ToString();
+        }
+
         [ExcelFunction(Name = "DNS.ResolveAll")]
-        public static string[] DNSResolveAll([ExcelArgument(Description = "Hostname or IP address to resolve")] string Hostname)
+        public static object[] DNSResolveAll([ExcelArgument(Description = "Hostname or IP address to resolve")] string Hostname)
         {
             var ipEntry = Dns.GetHostEntry(Hostname);
-            return ipEntry.AddressList.Select(x => x.ToString()).ToArray();
+            return ipEntry.AddressList.Select(x => x.ToString()).Cast<object>().ToArray();
         }
 
         [ExcelFunction(Name = "RegexExtract")]

@@ -68,5 +68,16 @@ namespace libExcelRegexTest
             foreach (var email in bad)
                 Assert.AreEqual(false, MyFunctions.IsEmail(email));
         }
+
+        [TestMethod]
+        public void TestTimespanToMinutes()
+        {
+            var a = MyFunctions.TimespanToMinutes("3 minutes");
+            Assert.AreEqual(3, a);
+
+            a = MyFunctions.TimespanToMinutes("3 hours 2 minutes");
+            Assert.AreEqual(182, a);
+        }
+
     }
 }

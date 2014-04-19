@@ -11,6 +11,7 @@ namespace libExcelRegex
 {
     public class MyFunctions
     {
+        //http://regexlib.com/Search.aspx?k=email&c=-1&m=5&ps=20 seems to be a good source of email validation regexes
         private static readonly Regex ReIsEmail = new Regex(
             @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.Compiled);
 
@@ -18,12 +19,6 @@ namespace libExcelRegex
         public static void EnableBeep()
         {
             XlCall.Excel(XlCall.xlcOnRecalc, null, "Beep");
-        }
-
-        [ExcelCommand(MenuName = "&TestOnRecalc", MenuText = "Beep &Now")]
-        public static void Beep()
-        {
-            Console.Beep();
         }
 
         [ExcelCommand(MenuText = "Show Log Window")]
@@ -35,7 +30,7 @@ namespace libExcelRegex
         [ExcelFunction(Name = "RegexExtract")]
         public static string RegexExtract(string Input, string Pattern, double GroupNum)
         {
-            Match m = Regex.Match(Input, Pattern);
+            var m = Regex.Match(Input, Pattern);
             string ret = string.Empty;
 
             if (m.Success)
@@ -56,8 +51,13 @@ namespace libExcelRegex
             MD5 md5 = MD5.Create();
             using (var fs = File.OpenRead(Filename))
             {
-                return md5.ComputeHash(fs).Aggregate(new StringBuilder(), (sb, b) => sb.AppendFormat("{0:X2}", b),
-                                                     x => x.ToString());
+                return md5
+                    .ComputeHash(fs)
+                    .Aggregate(
+                        new StringBuilder(), 
+                        (sb, b) => sb.AppendFormat("{0:X2}", b),
+                        x => x.ToString()
+                    );
             }
         }
 

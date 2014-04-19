@@ -1,9 +1,3 @@
 <DnaLibrary Name="ExcelRegex" Language="CS" RuntimeVersion="v4.0">
   <ExternalLibrary Path="libExcelRegex\bin\Release\libExcelRegex.dll" Pack="true" />
-<!-- <Reference AssemblyPath="System.Windows.Forms.dll" />
-<Reference AssemblyPath="System.Core.dll" />
-<Reference AssemblyPath="System.Web.dll" />
-<Reference AssemblyPath="Microsoft.CSharp.dll" />
-<Reference AssemblyPath="System.Text.RegularExpressions" /> -->
-
 </DnaLibrary>

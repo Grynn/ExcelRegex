@@ -81,6 +81,15 @@ namespace libExcelRegex
             return ret;
         }
 
+        [ExcelFunction(Name="RegexReplace")]
+        public static string RegexReplace(
+            [ExcelArgument(Description="String (or Cell) to be matched")] string sInput, 
+            [ExcelArgument(Description="Regular Expression")] string sPattern, 
+            [ExcelArgument(Description="Replacement Expression")] string sReplacement)
+        {
+            return Regex.Replace(sInput, sPattern, sReplacement);
+        }
+
         [ExcelFunction(Name = "IsEmail")]
         public static bool IsEmail(string email)
         {

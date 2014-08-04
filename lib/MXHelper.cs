@@ -23,8 +23,8 @@ namespace libExcelRegex
             
             int hr = Win32Interop.DnsQuery(
                     ref domain, 
-                    Win32Interop.DnsQueryTypes.DNS_TYPE_MX, 
-                    Win32Interop.DnsQueryOptions.DNS_QUERY_BYPASS_CACHE, 
+                    Win32Interop.DnsQueryTypes.DNS_TYPE_MX,
+                    Win32Interop.DnsQueryOptions.DNS_QUERY_STANDARD, 
                     0, 
                     ref ptr1, 
                     0);
